@@ -1,26 +1,28 @@
+/*
+ * @Description: 路由控制
+ * @Author: mlzhang1
+ * @Date: 2020-09-14 20:58:04
+ * @LastEditTime: 2020-12-05 13:33:20
+ * @LastEditors: mlzhang1
+ * @email: 1163257974@qq.com
+ */
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { Router, Route, Switch, HashRouter } from 'react-router-dom';
+import PropTypes from 'prop-types';
+import Login from './page/login';
+import Test from './page/test';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
-
+const App = ({ history }) => (
+  <HashRouter>
+    <Router history={history}>
+      <Switch>
+        <Route exact path='/' component={Login} />
+        <Route path='/test' component={Test} />
+      </Switch>
+    </Router>
+  </HashRouter>
+);
+App.propTypes = {
+  history: PropTypes.shape({}).isRequired
+};
 export default App;
